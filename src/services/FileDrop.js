@@ -87,7 +87,6 @@ export default (FileDirective) => {
          */
         _preventAndStop(event) {
             event.preventDefault();
-            event.stopPropagation();
         }
         /**
          * Returns "true" if types contains files
