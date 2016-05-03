@@ -49,13 +49,6 @@ export default (FileDirective) => {
         getFilters() {
         }
         /**
-         * If returns "true" then HTMLInputElement will be cleared
-         * @returns {Boolean}
-         */
-        isEmptyAfterSelection() {
-            return !!this.element.attr('multiple');
-        }
-        /**
          * Event handler
          */
         onChange() {
@@ -65,10 +58,10 @@ export default (FileDirective) => {
 
             if(!this.uploader.isHTML5) this.destroy();
             this.uploader.addToQueue(files, options, filters);
-            if(this.isEmptyAfterSelection()) {
-                this.element.prop('value', null);
-                this.element.replaceWith(this.element = this.element.clone(true)); // IE fix
-            }
+
+            // clear HTMLInputElement
+            this.element.prop('value', null);
+            this.element.replaceWith(this.element = this.element.clone(true)); // IE fix
         }
     }
     
